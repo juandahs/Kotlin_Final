@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">proyecto_final</string>
+    <string name="hint_nombre">Nombre del jugador</string>
+    <string name="btn_registrar">Registrar</string>
 </resources>

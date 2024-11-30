@@ -4,7 +4,7 @@ import android.content.ContentValues
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
-class SqliteHelper(Context: MainActivity):SQLiteOpenHelper(Context, DB_NAME, null , DB_VERSION) {
+class SqliteHelper(Context: RegistroActivity):SQLiteOpenHelper(Context, DB_NAME, null , DB_VERSION) {
 
     companion object{
         const val DB_NAME =  "juego.db"
@@ -21,6 +21,9 @@ class SqliteHelper(Context: MainActivity):SQLiteOpenHelper(Context, DB_NAME, nul
                 "$USER_ID INTEGER PRIMARY KEY AUTOINCREMENT" +
                 ", $USER_NAME TEXT NOT NULL" +
                 ", $USER_SCORE INTEGER DEFAULT 0)"
+
+        db?.execSQL(query)
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -34,7 +37,6 @@ class SqliteHelper(Context: MainActivity):SQLiteOpenHelper(Context, DB_NAME, nul
         val contentValues = ContentValues()
         contentValues.put(USER_NAME, usuario.nombre)
         contentValues.put(USER_SCORE, usuario.puntaje)
-
         val result = db.insert(DB_TABLE, null, contentValues)
         db.close()
         return result
