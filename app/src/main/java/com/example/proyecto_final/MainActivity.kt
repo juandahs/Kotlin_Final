@@ -1,5 +1,6 @@
 package com.example.proyecto_final
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.proyecto_final.databinding.ActivityMainBinding
@@ -10,10 +11,19 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        val usuarioNombre = intent.getStringExtra("USUARIO_NOMBRE")
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.tvUsuarioNombre.text = "Bienvenido, $usuarioNombre"
+
+        binding.bntRegresar.setOnClickListener {
+            val intent = Intent(this, RegistroActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
     }
 }

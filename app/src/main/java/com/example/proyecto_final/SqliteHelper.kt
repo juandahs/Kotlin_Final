@@ -42,8 +42,8 @@ class SqliteHelper(Context: RegistroActivity):SQLiteOpenHelper(Context, DB_NAME,
         return result
     }
 
-    fun getUsuarios(): List<Usuario> {
-        val usuarios = mutableListOf<Usuario>()
+    fun getUsuarios(): ArrayList<Usuario> {
+        val usuarios = arrayListOf<Usuario>()
         val db = readableDatabase
         val query = "SELECT * FROM $DB_TABLE"
 
@@ -55,17 +55,18 @@ class SqliteHelper(Context: RegistroActivity):SQLiteOpenHelper(Context, DB_NAME,
                 val puntaje = cursor.getInt(cursor.getColumnIndexOrThrow(USER_SCORE))
                 val usuario = Usuario(id, nombre, puntaje)
                 usuarios.add(usuario)
-                cursor.close()
-                db.close()
             }
+            cursor.close()
+            db.close()
         } catch (e: Exception) {
             e.printStackTrace()
         }
         return usuarios
     }
-    fun delete(usuario: Usuario) {
+
+    fun delete(id: Int?) {
         val db = writableDatabase
-        val result = db.delete(DB_TABLE, "$USER_ID=?", null)
+        val result = db.delete(DB_TABLE, "$USER_ID=${id}", null)
         db.close()
     }
 }
