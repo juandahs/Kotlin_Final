@@ -9,7 +9,6 @@ import com.example.proyecto_final.databinding.ActivityRegistroBinding
 
 class RegistroActivity : AppCompatActivity() {
 
-    // Variables para SQLiteHelper y ViewBinding
     private lateinit var sqliteHelper: SqliteHelper
     private lateinit var binding: ActivityRegistroBinding
 
@@ -26,6 +25,7 @@ class RegistroActivity : AppCompatActivity() {
         setupRegisterButton()
     }
 
+
     private fun setupRegisterButton() {
         binding.bntRegistrar.setOnClickListener {
             val nombre = binding.etNombre.text.toString().trim() // Validación de entrada
@@ -39,7 +39,7 @@ class RegistroActivity : AppCompatActivity() {
 
             if (usuarioId > 0) {
                 showToast("Usuario registrado exitosamente")
-                navigateToMainActivity(usuario.nombre)
+                navigateToMainActivity(usuario.id, usuario.nombre, usuario.puntaje)
             } else {
                 showToast("Error al registrar el usuario")
             }
@@ -50,9 +50,11 @@ class RegistroActivity : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
-    private fun navigateToMainActivity(nombre:String) {
+    private fun navigateToMainActivity(id:Int?, nombre:String?, score:Int) {
         val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("USUARIO_ID", id)
         intent.putExtra("USUARIO_NOMBRE", nombre)
+        intent.putExtra("USUARIO_SCORE", score)
         startActivity(intent)
         finish()
     }
@@ -61,7 +63,7 @@ class RegistroActivity : AppCompatActivity() {
         val adapter = UsuarioAdapter()
         adapter.refreshUsuario(sqliteHelper.getUsuarios())
         adapter.setOnClickItem {
-            navigateToMainActivity(it.nombre)
+            navigateToMainActivity(it.id, it.nombre, it.puntaje)
         }
 
         adapter.setOnClickDeleteItem {
