@@ -43,7 +43,7 @@ class SqliteHelper(context: Context):SQLiteOpenHelper(context, DB_NAME, null , D
         return result
     }
 
-    fun getUsuarios(): ArrayList<Usuario> {
+    fun get(): ArrayList<Usuario> {
         val usuarios = arrayListOf<Usuario>()
         val db = readableDatabase
         val query = "SELECT * FROM $DB_TABLE"
@@ -65,7 +65,7 @@ class SqliteHelper(context: Context):SQLiteOpenHelper(context, DB_NAME, null , D
         return usuarios
     }
 
-    fun getUsuarioById(id: Int?): Usuario? {
+    fun getById(id: Int?): Usuario? {
         val db = readableDatabase
         val query = "SELECT * FROM $DB_TABLE WHERE $USER_ID = ?"
         var usuario: Usuario? = null
@@ -91,7 +91,7 @@ class SqliteHelper(context: Context):SQLiteOpenHelper(context, DB_NAME, null , D
         db.close()
     }
 
-    fun actualizarUsuario(usuario: Usuario?) {
+    fun update(usuario: Usuario?) {
         val db = writableDatabase
         val contentValues = ContentValues()
         contentValues.put(USER_NAME, usuario?.nombre)

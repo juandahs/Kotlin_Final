@@ -4,34 +4,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/low_poly_grid_haikei"
     android:padding="@dimen/padding_16dp">
 
-    <EditText
-        android:id="@+id/etNombre"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/hint_nombre"
-        android:inputType="textPersonName"/>
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-    <Button
-        android:id="@+id/bntRegistrar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_registrar"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/titulo"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:textAlignment="center"
-        android:text="@string/usuarios_registrados"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal"/>
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_nombre"
+            android:inputType="textPersonName"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvUsuarios"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/bntRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_registrar"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textAlignment="center"
+            android:text="@string/usuarios_registrados"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvUsuarios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>

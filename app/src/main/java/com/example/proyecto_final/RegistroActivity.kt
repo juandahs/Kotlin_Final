@@ -61,14 +61,14 @@ class RegistroActivity : AppCompatActivity() {
 
     private fun setupRecyclerView() {
         val adapter = UsuarioAdapter()
-        adapter.refreshUsuario(sqliteHelper.getUsuarios())
+        adapter.refreshUsuario(sqliteHelper.get())
         adapter.setOnClickItem {
             navigateToMainActivity(it.id, it.nombre, it.puntaje)
         }
 
         adapter.setOnClickDeleteItem {
             sqliteHelper.delete(it.id)
-            adapter.refreshUsuario(sqliteHelper.getUsuarios())
+            adapter.refreshUsuario(sqliteHelper.get())
         }
 
         binding.rvUsuarios.layoutManager = LinearLayoutManager(this)

@@ -4,15 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/low_poly_grid_haikei"
     android:padding="@dimen/padding_16dp">
 
-    <!-- Encabezado -->
+    <!-- Encabezado con información del usuario y botón de regreso -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:padding="10dp">
 
+        <!-- Información del usuario -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -38,6 +42,7 @@
                 android:paddingTop="4dp" />
         </LinearLayout>
 
+        <!-- Botón de regresar -->
         <Button
             android:id="@+id/bntRegresar"
             android:layout_width="wrap_content"
@@ -45,36 +50,47 @@
             android:text="@string/btn_regresar" />
     </LinearLayout>
 
-    <!-- Operación Matemática -->
-    <TextView
-        android:id="@+id/tvOperacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textSize="@dimen/text_size_50sp"
-        android:textStyle="bold"
-        tools:text="3 x 4" />
-
-    <EditText
-        android:id="@+id/etRespuesta"
+    <!-- Contenedor para la operación matemática -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Respuesta"
-        android:inputType="number"
-        android:textAlignment="center" />
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/white"
+        android:padding="10dp">
 
-    <Button
-        android:id="@+id/bntVerificar"
+        <!-- Operación matemática centrada -->
+        <TextView
+            android:id="@+id/tvOperacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_50sp"
+            android:textStyle="bold"
+            tools:text="3 x 4" />
+    </LinearLayout>
+
+    <!-- Campo de respuesta, botón verificar -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Verificar" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:padding="10dp">
 
-    <TextView
-        android:id="@+id/tvResultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textStyle="bold"
-        android:visibility="gone"
-        tools:text="Resultado" />
+        <!-- Campo de respuesta -->
+        <EditText
+            android:id="@+id/etRespuesta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Respuesta"
+            android:inputType="number"
+            android:textAlignment="center" />
+
+        <!-- Botón verificar -->
+        <Button
+            android:id="@+id/bntVerificar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Verificar" />
+    </LinearLayout>
 </LinearLayout>

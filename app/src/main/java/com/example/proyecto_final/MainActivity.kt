@@ -79,10 +79,10 @@ class MainActivity : AppCompatActivity() {
         binding.tvPuntaje.text = "Puntaje: $puntaje"
 
         // Guardar puntaje en la base de datos
-        var usuario = sqliteHelper.getUsuarioById(usuarioId)
+        var usuario = sqliteHelper.getById(usuarioId)
 
         usuario?.puntaje = puntaje
-        sqliteHelper.actualizarUsuario(usuario)
+        sqliteHelper.update(usuario)
 
         // Reiniciar juego
         binding.etRespuesta.text.clear()
